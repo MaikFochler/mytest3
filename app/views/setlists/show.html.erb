@@ -1,0 +1,26 @@
+<div class="container">
+  <p><b><%= @setlist.setname + " am " +  mdate(@setlist.setdate).to_s + " in " + nil_to_string(@setlist.setlocation)%></b></p>
+  <% myround=0%>
+  <% @settitels.each do |title| %>
+  
+    
+      <table class="table-sm table-hover table-bordered">
+          <% if !(myround == title.round)  %>
+            <tr style="color: white; background: green">
+              <th colspan="4" class="col-sm-12">Runde 
+              <%= myround = title.round %>
+              (<%= @settitels.where("round = ?", myround).count%> Titel) Dauer: ##.##.##
+              <%#= @settitels.where("round = ?", myround).sum(:title.dauer)%>
+              </th>
+            </tr>
+          <% end %>
+        <tr>
+          <td class="col-sm-2"><%= title.number%></td>
+          <td class="col-sm-6"><%= title.title.titel.truncate(25)%></td>
+          <td class="col-sm-2"><%= title.title.bpm%></td>
+          <td class="col-sm-2"><%= dauer_sformat(title.title.duration)%></td>
+        </tr>
+      </table>
+    
+  <% end %>
+</div>

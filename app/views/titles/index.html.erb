@@ -1,0 +1,15 @@
+<h1>Titelliste <%=@band.bandname %></h1>
+<hr>
+<% @titles.each do |t| %>
+  <%= link_to edit_band_title_path(@band, t) do %>
+<!--    <div style="margin: 5px; padding: 5px; border: 1px solid black;"> -->
+    <div class="row">
+      <div class="col-md-1"><%=t.id%></div>
+      <div class="col-md-3"><%= t.titel %></div>
+      <div class="col-md-3"><%= t.interpret %></div>
+      <div class="col-md-1"><%= t.bpm %></div>
+      <div class="col-md-2"><%= dauer_format(t.duration) %></div>  
+      <div class="col-md-2"><%= 1000 * dauer_format(t.duration).to_f %></div>  
+    </div>
+  <% end %>
+<% end %>

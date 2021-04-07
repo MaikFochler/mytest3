@@ -1,0 +1,38 @@
+<div class="container">
+  <p><b>Setlisten von <%=@band.bandname %></b>  
+  <%= link_to '<Titelliste bearbeiten>', band_titles_path(@band) %>
+  (
+  <%= @band.titles.count %>
+  ) Songs 
+  </p>
+  <table class="table-sm table-hover table-bordered">  
+    <tr>
+      <th class="col-sm-3">Name</th>
+      <th class="col-sm-3">Datum</th>
+      <th class="col-sm-3">Ort</th>
+      <th class="col-sm-3">Anzahl Songs</th>
+    </tr>
+    <% @setlists.each do |setlist| %>
+      <%#= link_to band_setlist_path(@band, setlist) do %>
+        <tr>
+        <!--<div style="margin: 5px; padding: 5px; border: 1px solid black;"> 
+          <% if setlist.setname.nil? %>
+            ohne Namen -
+          <% else %>
+            <%= setlist.setname %>
+          <% end %>
+          am 
+          <%= kdate(setlist.setdate)%>
+          (
+          <%= setlist.settitels.count%>
+           Songs)
+        </div> -->
+          <td class="col-sm-3"><%= link_to setlist.setname, band_setlist_path(@band, setlist) %></td>
+          <td class="col-sm-3"><%= mdate(setlist.setdate)%></td>
+          <td class="col-sm-3"><%= setlist.setlocation%>
+          <td class="col-sm-3"><%= setlist.settitels.count%></td>   
+        </tr>
+      <%# end %>
+    <% end %>
+  </table>
+</div>

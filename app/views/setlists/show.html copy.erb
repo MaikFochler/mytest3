@@ -1,0 +1,19 @@
+<br>
+<h1><%= @setlist.setname %></h1>
+
+<hr>
+<%= @titles.count %>
+<hr>
+<% @titles.each do |title| %>
+  
+    <% if !@settitel_ids.include?(title.id) %>
+      <div>
+        <%= title.titel %>
+      </div>
+    <% else %>
+      <div style="margin: 5px; padding: 5px; background: green;">%>
+        <%= title.titel %>
+      </div>
+  
+  <% end %>
+<% end %>

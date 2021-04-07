@@ -1,0 +1,22 @@
+<h1><%= @setlist.setname %></h1>
+<hr>
+<% myround=0%>
+<% @settitels.each do |title| %>
+  <div clas="container">
+    <div class="table">
+      <tr>
+      <% if !(myround == title.round)  %>
+          <div class="col-sm-12", >Runde 
+            <%= myround = title.round %> Anzahl der Titel:
+            <%= @settitels.where("round = ?", myround).count%>
+          </div>
+      <% end %>
+      <div class="col-sm-1"><%= title.number%></div>
+      <div class="col-sm-2"><%= title.title.titel%></div>
+      <div class="col-sm-1"><%= title.title.bpm%></div>
+      <div class="col-sm-1"><%= dauer_sformat(title.title.duration)%></div>
+      </tr>
+    </div>
+  </div>
+  
+<% end %>

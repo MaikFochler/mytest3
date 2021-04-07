@@ -1,0 +1,12 @@
+<h1>Band: <%= @band.bandname %></h1>
+<hr>
+<%= @band.members.count %>
+ Mitglieder 
+
+<%= @band.titles.count %>
+<%= link_to 'Songs', band_titles_path(@band) %>
+
+<%= @band.setlists.count %>
+<%= link_to 'Setlisten', band_setlists_path(@band) %>
+<%#band_id: @band.id%>
+<hr>

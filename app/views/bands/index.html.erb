@@ -1,0 +1,5 @@
+<h1>Bandliste</h1>
+<hr>
+<% @bands.each do |band| %>
+    <h2><%= link_to band.bandname, band_setlists_path(band)%></h2>
+<% end %>
